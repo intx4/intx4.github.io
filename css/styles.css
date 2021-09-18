@@ -10359,4 +10359,13 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 }
-
+.terminal {
+  animation: blink 1s infinite step-end;
+ }
+ 
+ @keyframes blink {
+   from, to { opacity: 0; }
+   
+   50% {opacity: 1;}
+ }
+ 
