@@ -10362,6 +10362,11 @@ section.resume-section .resume-section-content {
 .terminal {
   animation: blink 1s infinite step-end;
  }
+
+.updated {
+  font-style: italic;
+  color: lightgrey;
+ }
  
  @keyframes blink {
    from, to { opacity: 0; }
