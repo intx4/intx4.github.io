@@ -38,8 +38,8 @@ $$
 \mathbb{P}[\mathcal{M}(D_1) \in S] \leq e^\epsilon \cdot \mathbb{P}[\mathcal{M}(D_2) \in S] + \delta 
 $$
 
-We have an additional term now, $\delta$. What this term represents, in very simple words, is the probability of *things going wrong*.
-Now, it turns out that the actual meaning of *things going wrong* it's quite deep, and rather (mathematically) elegant. In literature, we distinguish between to characterization of $\delta$.
+We have an additional term now, $\delta$. What this term represents, in very simple words, is the probability of *things going wrong*. Naturally, it is better to have this term as little as possible (like *very little*, i.e., *cryptographically small*: $\delta \ll \frac{1}{\|D_1\|}$)
+Now, it turns out that the actual meaning of *things going wrong* it's quite deep, and rather (mathematically) elegant. Infact, in literature, we distinguish between two characterization of $\delta$.
 
 
 The first one is the following:
@@ -81,6 +81,19 @@ Here is a graphical representations of the two charachterizations of $\delta$:
 Finally, note that:
 - ($\epsilon,\delta$)-pDP $\to$ ($\epsilon,\delta$)-aDP (pDP implies aDP).
 - In general, ($\epsilon,\delta$)-aDP $\not\to$ ($\epsilon,\delta$)-pDP (it holds when $\epsilon = 0$, but usually to "go" from pDP to aDP we have to loosen the parameters. Concretely, probability that PLRV is bound by $\epsilon$ does not necessarily hold for a ($\epsilon,\delta$)-aDP mechanism).
+
+## On the shortcomings of ($\epsilon,\delta$)-DP
+In the previous section we have seen that ($\epsilon,\delta$)-DP has a fundamental limitation, that is it is very hard to grasp with this notion what happens with probability $\delta$: does privacy degrade gracefully like when using the Gaussian noise mechanism, or is is destroyed completely as in *name-and-shame*? In short, with probability $\delta$, *all bets are off* as a loss of infinity can happen. Finally, it turns out that the bound you get when composing ($\epsilon,\delta$)-DP sequentially are not *tight* (i.e., we can find better bounds).
+
+That is why in literature several relaxations of DP have been proposed.
+Historically, the first relaxation presented by C.Dwork et al. was *Concentrated-DP*:
+> A mechanism $\mathcal{M}$ is ($\mu,\tau$)-concentrated-DP (cDP), if PLRV has mean $\mu$ and if subtracting the mean from it, we obtain a sub-gaussian RV with standard deviation $\tau$:
+$$
+\mathbb{E}_{O \sim \mathcal{M}(D_1)}[\mathcal{L}_{D_1/D_2}(O)] \leq \mu \;\text{and}\; \mathbb{E}_{O \sim \mathcal{M}(D_1)}[e^{(\alpha-1)(\mathcal{L}_{D_1/D_2}(O)]-\mu)}] \leq e^{(\alpha-1)^2 \frac{\tau^2}{2}}
+$$
+Intuitively, the cDP requires that PLRV to have a small mean, and to be "concentrated" around this mean (hence the name).
+This definition offers tighter bounds on composition, however it looses the closeness under post-processing capabilities. This is why Bun et al. proposed a relaxation of cDP named *zero-concentrated-DP* (zcDP):
+> 
 
 ## References
 - [Figure 1 of this paper gives a nice visual representation of the intuition behind aDP](https://eprint.iacr.org/2018/277.pdf).
