@@ -14,7 +14,7 @@ latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-Hello, I am Francesco. I currently serve as a Junior Security Research Engineer at Huawei, where I explore various solutions for confidential computing. My role involves researching and evaluating both hardware-based and software-based approaches, including Trusted Execution Environments (TEEs) as a hardware solution and leveraging Differential Privacy as software-based tools.
+Hey, I am Francesco. I currently serve as a Junior Security Research Engineer at Huawei, where I explore various solutions for confidential computing. My role involves researching and evaluating both hardware-based and software-based approaches, including Trusted Execution Environments (TEEs) as a hardware solution and leveraging Differential Privacy as software-based tools.
 
 I pursued a joint cybersecurity Master's degree at EPFL and ETH (Switzerland), where I delved into applied cryptography, with a specific focus on Privacy-Enhancing Technologies (PETs). My interest in PETs, particularly Homomorphic Encryption (HE) and Multiparty Computation (MPC), has grown steadily, and I have worked in applying such cutting-edge technologies for improving privacy in different scenarios ranging from applications to Machine Learning workflows to 5G Network monitoring.
 

@@ -239,9 +239,9 @@ $ docker-compose -f docker-local.yml up
 Assuming you have [Ruby](https://www.ruby-lang.org/en/downloads/) and [Bundler](https://bundler.io/) installed on your system (*hint: for ease of managing ruby gems, consider using [rbenv](https://github.com/rbenv/rbenv)*).
 
 ```bash
-$ bundle config set --local path 'vendor/bundle'
-$ bundle install
-$ bundle exec jekyll serve --lsi
+bundle config set --local path 'vendor/bundle'
+bundle install
+bundle exec jekyll serve --lsi
 ```
 
 Now, feel free to customize the theme however you like (don't forget to change the name!).
@@ -277,6 +277,7 @@ Starting version [v0.3.5](https://github.com/alshedivat/al-folio/releases/tag/v0
 4. Wait for a few minutes and let the action complete. You can see the progress in the **Actions** tab. If completed successfully, in addition to the `master` branch, your repository should now have a newly built `gh-pages` branch.
 5. Finally, in the **Settings** of your repository, in the Pages section, set the branch to `gh-pages` (**NOT** to `master`). For more details, see [Configuring a publishing source for your GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
 
+**NOTE: for the first time, you need to run ./bin/deploy due to some errors of automatic deployment caused by jekyll-scholar. After the first time, automatic deployment should work fine**
 If you keep your site on another branch, open `.github/workflows/deploy.yml` **on the branch you keep your website on** and change on->push->branches and on->pull\_request->branches to the branch you keep your website on. This will trigger the action on pulls/pushes on that branch. The action will then deploy the website on the branch it was triggered from.
 
 <details><summary>(click to expand) <strong>Manual deployment to GitHub Pages:</strong></summary>
