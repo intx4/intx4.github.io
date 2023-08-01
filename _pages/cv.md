@@ -1,9 +1,9 @@
 ---
 layout: cv
 permalink: /cv/
-title: cv
+title: Resume
 nav: true
 nav_order: 4
-cv_pdf: example_pdf.pdf
-description: This is a description of the page. You can modify it in 'pages/_cv.md'. You can also change or remove the top pdf download button.
+cv_pdf: francesco_intoci_cv.pdf
+description: You can download an (hopefully) updated version of my curriculum vitae by clicking on the button to the right. To make sure you have the most updated version, feel free to drop me an email.
 ---
