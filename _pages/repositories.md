@@ -1,10 +1,10 @@
 ---
 layout: page
-permalink: /repos/
-title: repositories
+permalink: /repositories/
+title: Projects
 description: Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.
-nav: false
-nav_order: 3
+nav: true
+nav_order: 2
 ---
 
 ## GitHub users

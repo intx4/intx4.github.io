@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Menu
-nav: true
-nav_order: 3
+nav: false
+nav_order: 2
 dropdown: true
 children:
     - title: Publications
@@ -11,8 +11,8 @@ children:
     - title: Projects
       permalink: /projects/
     - title: divider
-     - title: Repositories
-       permalink: /repos/
+    - title: Repositories
+      permalink: /repos/
     - title: divider
     - title: Blog
       permalink: /blog/
