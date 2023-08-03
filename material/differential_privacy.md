@@ -87,13 +87,33 @@ In the previous section we have seen that ($\epsilon,\delta$)-DP has a fundament
 
 That is why in literature several relaxations of DP have been proposed.
 Historically, the first relaxation presented by C.Dwork et al. was *Concentrated-DP*:
-> A mechanism $\mathcal{M}$ is ($\mu,\tau$)-concentrated-DP (cDP), if PLRV has mean $\mu$ and if subtracting the mean from it, we obtain a sub-gaussian RV with standard deviation $\tau$:
+> A mechanism $\mathcal{M}$ is ($\mu,\tau$)-concentrated-DP (cDP), if for any neighbouring databases $D_1$ and $D_2$, the PLRV has mean $\mu$ and if subtracting the mean from it, we obtain a sub-gaussian RV with standard deviation $\tau$, $\forall \alpha > 1$:
 $$
 \mathbb{E}_{O \sim \mathcal{M}(D_1)}[\mathcal{L}_{D_1/D_2}(O)] \leq \mu \;\text{and}\; \mathbb{E}_{O \sim \mathcal{M}(D_1)}[e^{(\alpha-1)(\mathcal{L}_{D_1/D_2}(O)]-\mu)}] \leq e^{(\alpha-1)^2 \frac{\tau^2}{2}}
 $$
+
 Intuitively, the cDP requires that PLRV to have a small mean, and to be "concentrated" around this mean (hence the name).
 This definition offers tighter bounds on composition, however it looses the closeness under post-processing capabilities. This is why Bun et al. proposed a relaxation of cDP named *zero-concentrated-DP* (zcDP):
-> 
+
+> A mechanism $\mathcal{M}$ is ($\xi,\rho$)zero-concentrated-DP (zcDP), if for any neighbouring databases $D_1$ and $D_2$, the PLRV is a sub-gaussian RV with mean $0$ and small variance, $\forall \alpha > 1$:
+$$
+ \mathbb{E}_{O \sim \mathcal{M}(D_1)}[e^{(\alpha-1)(\mathcal{L}_{D_1/D_2}(O)])}] \leq e^{(\alpha-1)(\xi+\rho\alpha)}
+$$
+A benefit of zcDP is its closeness under post-processing, while keeping tight bounds (that is why it is usually used in deployments over cDP).
+
+Finally, a further relaxation of zcDP is *Renyi-DP* (rDP):
+> A mechanism $\mathcal{M}$ is ($\alpha,\epsilon$)Renyi-DP (rDP) if for any neighbouring databases $D_1$ and $D_2$:
+$$
+ \mathbb{E}_{O \sim \mathcal{M}(D_1)}[e^{(\alpha-1)(\mathcal{L}_{D_1/D_2}(O)])}] \leq e^{(\alpha-1)(\epsilon)}
+$$
+We note two differences between rDP and (z)cDP:
+- rDP now takes $\alpha$ as a parameter: this means that it does not put a bound on *all* the moments of $\mathcal{L}$ at the same time (a moment of a RV $X$ is merely $\mathbb{E}[e^{X^t}]$, for different values $t=0,\dots,n$. They give important information on a RV: for example, the second moment $\mathbb{E}[e^{X^2}]$ is the variance).
+- rDP does not require a linear relationship between the moments and the bound (for reference, (z)cDP required a linear relationship between what $\epsilon$ represents in rDP and $\alpha$, this is why we do not have $\epsilon$ but rather $\tau$ and $\rho,\xi$ in cDP and zcDP).
+
+rDP is a relaxation of zcDP, but it allows for better bounds when composing mechanisms sequentially.
+
+To sum up, all this definitions we have given try to go behond ($\epsilon,\delta$)-DP by giving a better charachterization of the privacy risk we encour: rather then reasoning about worst-case, they try to reason by averaging the risk, putting some tail-bounds on how the PLRV behaves(i.e., trying to model its behaviour for unlikely events).
+
 
 ## References
 - [Figure 1 of this paper gives a nice visual representation of the intuition behind aDP](https://eprint.iacr.org/2018/277.pdf).
@@ -104,6 +124,8 @@ This definition offers tighter bounds on composition, however it looses the clos
 - [The DP cookbook by C.Dwork, the original author of DP](https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf).
 - [Nice lecture notes on DP](http://www.gautamkamath.com/CS860notes/lec5.pdf).
 - [Very technical comparison between pDP and aDP, with also a counter examples that aDP does not imply pDP](https://eprint.iacr.org/2018/277.pdf).
+
+
 
 
 
