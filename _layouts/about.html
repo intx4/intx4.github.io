@@ -1,8 +1,20 @@
 ---
 layout: default
 ---
-
 <!-- about.html -->
+<head>
+  <style>
+.terminal {
+  animation: blink 1s infinite step-end;
+ }
+ 
+@keyframes blink {
+  from, to { opacity: 0; }
+  50% {opacity: 1;}
+}
+  </style>
+</head>
+<body>
       <div class="post">
         <header class="post-header">
           <h1 class="post-title">
@@ -38,6 +50,9 @@ layout: default
           {%- endif %}
 
           <div class="clearfix">
+            <div style="display:inline-flex">
+            <h2 style="color: var(--global-theme-color); display: inline-flexbox;">~$ whoami</h2><h2 class="terminal" style="color: var(--global-theme-color); display: inline-flexbox">_</h2>
+            </div>
             {{ content }}
           </div>
 
@@ -75,3 +90,4 @@ layout: default
         </article>
 
 </div>
+</body>

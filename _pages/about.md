@@ -5,19 +5,21 @@ permalink: /
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
-  address: >
-    <p>Zurich, Switzerland</p>
+  image: prof_pic.jpeg
+  image_circular: true # crops the image to make it circular
+
 
 news: false  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
+Hello, I am Francesco. I currently serve as a Junior Security Research Engineer at Huawei, where I explore various solutions for confidential computing. My role involves researching and evaluating both hardware-based and software-based approaches, including Trusted Execution Environments (TEEs) as a hardware solution and leveraging Differential Privacy as software-based tools.
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I pursued a joint cybersecurity Master's degree at EPFL and ETH (Switzerland), where I delved into applied cryptography, with a specific focus on Privacy-Enhancing Technologies (PETs). My interest in PETs, particularly Homomorphic Encryption (HE) and Multiparty Computation (MPC), has grown steadily, and I have worked in applying such cutting-edge technologies for improving privacy in different scenarios ranging from applications to Machine Learning workflows to 5G Network monitoring.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I obtained my Bachelor's degree in Computer Engineering from Politecnico di Torino (Italy), where I graduated with honors.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Outside of work, I maintain an active and fitness-oriented lifestyle as a canoe polo player for 7 years, competing at an agonistic level. Engaging in this sport has instilled in me valuable qualities such as discipline, resilience, and teamwork, benefiting both my personal and professional life.
+
+Additionally, I find joy and a connection to my home country through cooking. Preparing traditional Italian recipes that have been passed down within my family allows me to feel closer to home while nurturing my creativity outside the professional realm.

@@ -239,6 +239,7 @@ $ docker-compose -f docker-local.yml up
 Assuming you have [Ruby](https://www.ruby-lang.org/en/downloads/) and [Bundler](https://bundler.io/) installed on your system (*hint: for ease of managing ruby gems, consider using [rbenv](https://github.com/rbenv/rbenv)*).
 
 ```bash
+$ bundle config set --local path 'vendor/bundle'
 $ bundle install
 $ bundle exec jekyll serve --lsi
 ```
