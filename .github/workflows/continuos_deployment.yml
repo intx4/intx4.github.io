@@ -5,7 +5,7 @@ on:
     types: [completed]
 
 jobs:
-  # build and deploy to github pages site.
+  # build and deploy to github pages site
   release:
     runs-on: ubuntu-latest
     steps:
