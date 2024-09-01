@@ -1,27 +1,27 @@
-on:
-  workflow_run:
-    branches: [rust_wasm]
-    workflows: [Continuous integration]
-    types: [completed]
+name: Continuous integration
+on: [push, pull_request]
 
 jobs:
-  release:
+  test: # job name
+    # test
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
+    - uses: actions/checkout@v4
+    - run: cargo test --all
 
-      - uses: jetli/trunk-action@v0.1.0
-      - uses: jetli/wasm-bindgen-action@v0.1.0
+  format:
+    # code formatting
+    runs-on: ubuntu-latest
 
-      - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v4
+    - run: cargo fmt --all -- --check
 
-      - run: trunk build --release --public-url /${{ github.event.repository.name }}/
+  clippy:
+    # code smells
+    runs-on: ubuntu-latest
 
-      - uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+    steps:
+    - uses: actions/checkout@v4
+    - run: cargo clippy --all -- -D warnings
