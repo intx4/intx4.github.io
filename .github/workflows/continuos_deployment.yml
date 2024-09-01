@@ -1,3 +1,4 @@
+name: Continuous deployment
 on:
   workflow_run:
     branches: [rust_wasm]
