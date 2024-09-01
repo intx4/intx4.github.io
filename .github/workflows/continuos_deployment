@@ -1,29 +1,37 @@
 name: Continuous deployment
-on:
-  workflow_run:
-    # run CD only on changes to rust_wasm, upon the CI workflow ends up in completed state
-    branches: [rust_wasm]
-    workflows: [Continuous integration]
-    types: [completed]
+#on:
+  #workflow_run:
+  #  # run CD only on changes to rust_wasm, upon the CI workflow ends up in completed state
+  #  branches: [rust_wasm]
+  #  workflows: [Continuous integration]
+  #  types: [completed]
+on: [push, pull_request]
+
+#jobs:
+#  release:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions-rs/toolchain@v1
+#        with:
+#          toolchain: stable
+#          target: wasm32-unknown-unknown
+#
+#      - uses: jetli/trunk-action@v0.1.0
+#      - uses: jetli/wasm-bindgen-action@v0.1.0
+#
+#      - uses: actions/checkout@v4
+#
+#      - run: trunk build --release --public-url /${{ github.event.repository.name }}/
+#
+#      - uses: peaceiris/actions-gh-pages@v3
+#        if: github.ref == 'refs/heads/rust_wasm'
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./dist
+#
 
 jobs:
-  release:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
-
-      - uses: jetli/trunk-action@v0.1.0
-      - uses: jetli/wasm-bindgen-action@v0.1.0
-
-      - uses: actions/checkout@v4
-
-      - run: trunk build --release --public-url /${{ github.event.repository.name }}/
-
-      - uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/rust_wasm'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+      - run: echo "Hello, world!"
