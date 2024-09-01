@@ -1,10 +1,5 @@
 name: Continuous deployment
-on:
-  workflow_run:
-    branches: [rust_wasm]
-    workflows: [Continuous integration]
-    types: [completed]
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
   # build and deploy to github pages site
