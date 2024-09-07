@@ -1,33 +1,47 @@
-use yew::prelude::*;
+use yew::{UseReducerHandle, Html, ContextProvider, html, function_component};
+use crate::contexts::theme::{ThemeState, use_theme_context};
 
-const OWNER: &str = "Francesco Intoci";
+mod components;
+mod contexts;
+mod ui;
 
-struct Index;
-impl Component for Index {
-    type Message = ();
-    type Properties = ();
+use components::{
+    nav::Nav,
+    landing::Landing,
+    aboutme::Aboutme,
+    contact::Contact,
+};
 
-    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        Self
-    }
+#[derive(Clone, Debug, PartialEq)]
+pub struct AppContext {
+    theme: UseReducerHandle<ThemeState>,
+    theme_cycle: Vec<&'static str>,
+}
 
-    fn update(&mut self, _: Self::Message) -> ShouldRender {
-        false
-    }
+#[function_component]
+fn App() -> Html {
+    let theme: UseReducerHandle<ThemeState> = use_theme_context();
+    let theme_cycle: Vec<&str> = vec!["light", "dark"];
 
-    fn change(&mut self, _: Self::Properties) -> ShouldRender {
-        false
-    }
-
-    fn view(&self) -> Html {
-        html! {
-            <h1>
-                { format!("Hey visitor! Welcome to {} website.\n I am currently revamping it after a long period of inactivity, converting this into a fun side project...stay tuned!", OWNER) }
-            </h1>
-        }
-    }
+    html!{
+        <ContextProvider<AppContext> context={AppContext {
+            theme: theme.clone(),
+            theme_cycle: theme_cycle
+        }}>
+            <main class={theme.current}>
+                <div class="w-full h-full bg-gray-50 dark:bg-slate-900 text-black dark:text-slate-300 transition">
+                    <div class="max-w-[1200px] m-auto p-4">
+                        <Nav />
+                        <Landing />
+                        <Aboutme />
+                        <Contact />
+                    </div>
+                </div>
+            </main>
+        </ContextProvider<AppContext>>
+}
 }
 
 fn main() {
-    yew::start_app::<Index>();
+    yew::Renderer::<App>::new().render();
 }
