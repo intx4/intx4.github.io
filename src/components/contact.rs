@@ -1,9 +1,5 @@
 use yew::prelude::*;
-use crate::components::svg::{
-    emojis::{ Blushing },
-    undraw::QuickChat,
-};
-use crate::components::svg::logos::{Linkedin, Mail, Twitter, Github};
+use crate::components::svg::logos::{Linkedin, Mail, Twitter, Github, PdfIcon};
 use crate::ui::{Title, Card, TextLink};
 
 struct Item {
@@ -43,6 +39,12 @@ pub fn contact() -> Html {
             link: "mailto:francesco.intoci@protonmail.com",
             icon: html! { <Mail /> },
             title: "Email",
+        },
+		Item {
+			// TODO: update repo
+            link: "https://raw.githubusercontent.com/intx4/intx4.github.io/old_site_backup/assets/resume.pdf",
+            icon: html! { <PdfIcon /> },
+            title: "CV",
         },
     ];
 

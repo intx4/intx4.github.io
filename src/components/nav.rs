@@ -1,5 +1,6 @@
 use yew::prelude::{Html, Callback, MouseEvent, html, use_context, use_state, use_effect_with, function_component};
 use crate::ui::{Button, TextLink};
+use crate::components::svg::emojis::Home;
 use crate::AppContext;
 use crate::contexts::theme::ThemeAction;
 use crate::components::svg::themes::{ Light, Dark };
@@ -36,14 +37,6 @@ pub fn Nav() -> Html {
 
     html!{
 	<header class="flex flex-wrap gap-2 justify-between items-center select-none">
-	    /* Logo */
-	    <TextLink
-                link="/"
-                class="flex gap-6 items-center"
-            >
-                <span class={"text-3xl"}>{ "intx4" }</span>
-	    </TextLink>
-
 	    /* Navigation */
 	    <nav>
 		<ul class="flex flex-wrap gap-4 items-center [&>li]:cursor-pointer">

@@ -108,8 +108,9 @@ pub fn aboutme() -> Html {
                     <Whoami>
                         // each line should live in its own <p>
                         // add a child in whoami.rs (typing style)
-                        <p>{"==> Francesco Intoci: SWE living in Zurich"}</p>
-                        <p>{"    currently working in the Blockchain sector"}</p>
+                        <p>{"==> Francesco Intoci: SWE living in Zurich, coming from Sicily"}</p>
+                        <p>{"    currently working in Blockchain @ Taurus"}</p>
+                        <p>{"    strong interest in security, privacy and cryptography engineering"}</p>
                     </Whoami>
                     //<ul class="pl-4 list-disc flex flex-col gap-4 items-between [&>li>a>svg]:w-[1.8rem] [&>li>a>svg]:h-[1.8rem] [&>li>a>svg]:relative [&>li>a>svg]:-top-[0.1rem] [&>li>a>svg]:dark:fill-white [&>li>a>svg]:dark:stroke-white">
                     //    {aboutme_bulletpoints(app_context.clone(), programming_languages)}
