@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 use crate::components::svg::emojis::Nerd;
-use crate::ui::{Title, Card};
+use crate::ui::{Card, Title};
 
 struct Skill {
     pub lang: String,
@@ -18,8 +18,8 @@ pub fn skills() -> Html {
         // Add more skills as such ^
     ];
 
-    html!{
-	<>
+    html! {
+    <>
             <Title>
                 { "Skills" } { " " } <Nerd />
             </Title>

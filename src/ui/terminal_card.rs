@@ -2,7 +2,7 @@ use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
 pub struct TerminalCardProps {
-    pub children: Children,  // The children prop will allow for nested text or components inside the TerminalCard.
+    pub children: Children, // The children prop will allow for nested text or components inside the TerminalCard.
 }
 
 #[function_component(TerminalCard)]

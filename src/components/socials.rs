@@ -1,6 +1,6 @@
-use yew::{Html, html, function_component};
-use crate::components::svg::logos::{Mail, Linkedin};
+use crate::components::svg::logos::{Linkedin, Mail};
 use crate::ui::TextLink;
+use yew::{function_component, html, Html};
 
 struct Item {
     link: &'static str,
@@ -42,7 +42,6 @@ pub fn Socials() -> Html {
         },
     ];
 
-
     html! {
         <div>
             <ul class="w-full p-4 flex flex-wrap gap-4 justify-around items-center">
@@ -51,7 +50,7 @@ pub fn Socials() -> Html {
                         <li title={item.title}>
                             <TextLink
                                 link={item.link}
-                                open_in_tab={ !item.link.contains("mailto") } 
+                                open_in_tab={ !item.link.contains("mailto") }
                                 class="p-4 inline-block [&>svg]:w-[2rem] [&>svg]:h-[2rem] [&>svg]:dark:stroke-white [&>svg]:dark:fill-white"
                             >
                                 { item.icon }

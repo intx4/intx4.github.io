@@ -1,4 +1,4 @@
-use yew::prelude::{Html, Properties, html, function_component};
+use yew::prelude::{function_component, html, Html, Properties};
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
@@ -14,7 +14,7 @@ pub struct Props {
 #[function_component]
 pub fn TextLink(props: &Props) -> Html {
     let classes: &'static str = match props.class.is_empty() {
-        true => "underline text-blue-700 dark:text-blue-400", 
+        true => "underline text-blue-700 dark:text-blue-400",
         false => props.class,
     };
 
@@ -27,8 +27,8 @@ pub fn TextLink(props: &Props) -> Html {
                 class={classes}
             >
                 {props.children.clone()}
-            </a>           
-        }
+            </a>
+        };
     }
 
     html! {

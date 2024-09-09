@@ -1,5 +1,5 @@
-use yew::{function_component, html, use_context, Html, Properties, AttrValue};
 use crate::ui::Button;
+use yew::{function_component, html, use_context, AttrValue, Html, Properties};
 
 #[derive(PartialEq)]
 pub enum ProjectCardColor {
@@ -22,7 +22,6 @@ pub struct Props {
 
 #[function_component(ProjectCard)]
 pub fn project_card(props: &Props) -> Html {
-
     html! {
         <div class="py-8">
             <div

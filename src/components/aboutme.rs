@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use crate::ui::TerminalCard;
+use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
@@ -59,7 +59,6 @@ p:nth-child(3) {
     }
 }
 
-
 #[function_component(Whoami)]
 pub fn whoami(props: &Props) -> Html {
     html! {
@@ -101,7 +100,7 @@ pub fn aboutme() -> Html {
     //        }
     //    }
 
-    html!{
+    html! {
         <TerminalCard >
             <div class="flex gap-4 justify-between items-center max-[650px]:flex-col max-[650px]:gap-8">
                 <section class="flex flex-col gap-4 justify-center">
@@ -109,8 +108,8 @@ pub fn aboutme() -> Html {
                         // each line should live in its own <p>
                         // add a child in whoami.rs (typing style)
                         <p>{"==> Francesco Intoci: SWE living in Zurich, coming from Sicily"}</p>
-                        <p>{"    currently working in Blockchain @ Taurus"}</p>
-                        <p>{"    strong interest in security, privacy and cryptography engineering"}</p>
+                        <p>{"==> currently working in Blockchain @ Taurus"}</p>
+                        <p>{"==> strong interest in security, privacy and cryptography engineering"}</p>
                     </Whoami>
                     //<ul class="pl-4 list-disc flex flex-col gap-4 items-between [&>li>a>svg]:w-[1.8rem] [&>li>a>svg]:h-[1.8rem] [&>li>a>svg]:relative [&>li>a>svg]:-top-[0.1rem] [&>li>a>svg]:dark:fill-white [&>li>a>svg]:dark:stroke-white">
                     //    {aboutme_bulletpoints(app_context.clone(), programming_languages)}

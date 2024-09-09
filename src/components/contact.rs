@@ -1,6 +1,6 @@
+use crate::components::svg::logos::{Github, Linkedin, Mail, PdfIcon, Twitter};
+use crate::ui::{Card, TextLink, Title};
 use yew::prelude::*;
-use crate::components::svg::logos::{Linkedin, Mail, Twitter, Github, PdfIcon};
-use crate::ui::{Title, Card, TextLink};
 
 struct Item {
     link: &'static str,
@@ -10,7 +10,7 @@ struct Item {
 
 #[function_component(Contact)]
 pub fn contact() -> Html {
-	let items: Vec<Item> = vec![
+    let items: Vec<Item> = vec![
         //Item {
         //    link: "https://www.youtube.com/@marcempunkt9737",
         //    icon: html! { <Youtube /> },
@@ -48,7 +48,6 @@ pub fn contact() -> Html {
         },
     ];
 
-
     let socials = html! {
         <div>
             <ul class="w-full p-4 flex flex-wrap gap-4 justify-around items-center">
@@ -57,7 +56,7 @@ pub fn contact() -> Html {
                         <li title={item.title}>
                             <TextLink
                                 link={item.link}
-                                open_in_tab={ !item.link.contains("mailto") } 
+                                open_in_tab={ !item.link.contains("mailto") }
                                 class="p-4 inline-block [&>svg]:w-[2rem] [&>svg]:h-[2rem] [&>svg]:dark:stroke-white [&>svg]:dark:fill-white"
                             >
                                 { item.icon }
@@ -69,16 +68,16 @@ pub fn contact() -> Html {
         </div>
     };
 
-    html!{
-	<>
-	    <Title id="contact">
+    html! {
+    <>
+        <Title id="contact">
                 { "Contacts" }
         </Title>
 
-	<div class="flex flex-col gap-10">
-		{ socials }
-	</div>
-	    
+    <div class="flex flex-col gap-10">
+        { socials }
+    </div>
+
         </>
     }
 }

@@ -1,4 +1,4 @@
-use yew::{function_component, html, Properties, Html, AttrValue};
+use yew::{function_component, html, AttrValue, Html, Properties};
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
@@ -14,7 +14,7 @@ pub fn title(props: &Props) -> Html {
             id={props.id.clone()}
             class="text-3xl pt-4 pb-8 font-bold flex gap-2 justify-center items-center [&>svg]:w-[2rem] [&>svg]:h-[2rem]"
         >
-            { props.children.clone() } 
+            { props.children.clone() }
         </h3>
     }
 }
