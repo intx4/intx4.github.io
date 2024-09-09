@@ -3,7 +3,6 @@ pub mod card;
 pub mod project_card;
 pub mod button;
 pub mod text_link;
-pub mod whoami;
 pub mod terminal_card;
 
 pub use title::Title;
@@ -12,5 +11,4 @@ pub use project_card::ProjectCard;
 pub use project_card::ProjectCardColor;
 pub use button::Button;
 pub use text_link::TextLink;
-pub use whoami::Whoami;
 pub use terminal_card::TerminalCard;

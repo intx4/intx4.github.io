@@ -1,5 +1,5 @@
 use yew::{Html, html, function_component};
-use crate::components::svg::logos::{Gitlab, Linkedin};
+use crate::components::svg::logos::{Mail, Linkedin};
 use crate::ui::TextLink;
 
 struct Item {
@@ -25,36 +25,40 @@ pub fn Socials() -> Html {
         //    icon: html! { <Twitter /> },
         //    title: "Twitter",
         //},
+        //Item {
+        //    link: "https://gitlab.com/marcempunkt",
+        //    icon: html! { <Gitlab /> },
+        //    title: "Gitlab",
+        //},
         Item {
-            link: "https://gitlab.com/marcempunkt",
-            icon: html! { <Gitlab /> },
-            title: "Gitlab",
-        },
-        Item {
-            link: "https://www.linkedin.com/in/marc-m%C3%A4urer-a877492b8/",
+            link: "https://www.linkedin.com/in/francesco-intoci-94465719b/",
             icon: html! { <Linkedin /> },
             title: "Linkedin",
         },
-        // TODO email
+        Item {
+            link: "maito:francesco.intoci@protonmail.com",
+            icon: html! { <Mail /> },
+            title: "Email",
+        },
     ];
+
 
     html! {
         <div>
             <ul class="w-full p-4 flex flex-wrap gap-4 justify-around items-center">
-                {items.into_iter().map(|item: Item| html! {
-                    <li
-                        class="rounded-md hover:bg-gray-50 dark:hover:bg-slate-700 transition"
-                        title={item.title}
-                    >
-                        <TextLink
-                            link={item.link}
-                            open_in_tab={true}
-                            class="p-4 inline-block [&>svg]:w-[2rem] [&>svg]:h-[2rem] [&>svg]:dark:stroke-white [&>svg]:dark:fill-white"
-                        >
-                            {item.icon}
-                        </TextLink>
-                    </li>
-                }).collect::<Html>()}
+            {items.into_iter().map(|item: Item| {
+                    html! {
+                        <li title={item.title}>
+                            <TextLink
+                                link={item.link}
+                                open_in_tab={ !item.link.contains("mailto") } 
+                                class="p-4 inline-block [&>svg]:w-[2rem] [&>svg]:h-[2rem] [&>svg]:dark:stroke-white [&>svg]:dark:fill-white"
+                            >
+                                { item.icon }
+                            </TextLink>
+                        </li>
+                    }
+            }).collect::<Html>()}
             </ul>
         </div>
     }

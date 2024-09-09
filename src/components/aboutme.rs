@@ -1,5 +1,77 @@
 use yew::prelude::*;
-use crate::ui::{TerminalCard, Whoami};
+use crate::ui::TerminalCard;
+
+#[derive(Properties, PartialEq)]
+pub struct Props {
+    pub children: Html,
+}
+
+#[function_component(Typing)]
+fn typing(props: &Props) -> Html {
+    html! {
+    <>
+    <style>
+    {"
+@keyframes typing {
+  from {
+    width: 0;
+    visibility: visible;
+  }
+  to {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+p {
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: monospace;
+  font-size: 20px;
+  color: green;
+  visibility: hidden; /* Initially hide all lines */
+  animation: typing 1s steps(40, end) forwards;
+}
+
+/* Specific delays for each line */
+p:nth-child(1) {
+  animation-delay: 0s;
+  animation-fill-mode: forwards; /* Ensure line stays visible after typing */
+  visibility: visible; /* Make the first line visible when its animation starts */
+}
+
+p:nth-child(2) {
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+p:nth-child(3) {
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+    "}
+    </style>
+    <div class="text-xl">
+        { props.children.clone() }
+    </div>
+    </>
+    }
+}
+
+
+#[function_component(Whoami)]
+pub fn whoami(props: &Props) -> Html {
+    html! {
+        <>
+            <div class="flex-row" style="display:flex; white-space:nowrap; overflow:hidden; align-items:baseline">
+                <h1 class="font-bold text-xl text-terminal">{"~$ whoami"}</h1><h1 class="font-bold text-xl terminal">{" _"}</h1>
+            </div>
+            <br />
+            <Typing>{props.children.clone()}</Typing>
+        </>
+    }
+}
 
 #[function_component(Aboutme)]
 pub fn aboutme() -> Html {
@@ -34,7 +106,10 @@ pub fn aboutme() -> Html {
             <div class="flex gap-4 justify-between items-center max-[650px]:flex-col max-[650px]:gap-8">
                 <section class="flex flex-col gap-4 justify-center">
                     <Whoami>
-                        <p>{"Lorem ipsum "}</p>
+                        // each line should live in its own <p>
+                        // add a child in whoami.rs (typing style)
+                        <p>{"==> Francesco Intoci: SWE living in Zurich"}</p>
+                        <p>{"    currently working in the Blockchain sector"}</p>
                     </Whoami>
                     //<ul class="pl-4 list-disc flex flex-col gap-4 items-between [&>li>a>svg]:w-[1.8rem] [&>li>a>svg]:h-[1.8rem] [&>li>a>svg]:relative [&>li>a>svg]:-top-[0.1rem] [&>li>a>svg]:dark:fill-white [&>li>a>svg]:dark:stroke-white">
                     //    {aboutme_bulletpoints(app_context.clone(), programming_languages)}

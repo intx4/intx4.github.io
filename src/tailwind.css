@@ -43,7 +43,7 @@ svg {
   font-style: italic;
   color: lightgrey;
 }
-
+    
 @keyframes blink {
   from, to { opacity: 0; }
   

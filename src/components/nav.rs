@@ -41,7 +41,7 @@ pub fn Nav() -> Html {
                 link="/"
                 class="flex gap-6 items-center"
             >
-                <span class={"text-3xl"}>{ "Francesco Intoci" }</span>
+                <span class={"text-3xl"}>{ "intx4" }</span>
 	    </TextLink>
 
 	    /* Navigation */
@@ -63,11 +63,11 @@ pub fn Nav() -> Html {
 
                 // TODO blog
 
-	            /* Link to Contact */
+	            /* Link to blog */
                     <li>
-                        <a href="#contact">
-                            <Button is_primary={true}>
-                                { "Contacts" }
+                        <a href="#blog">
+                            <Button is_secondary={true}>
+                                { "Blog (Coming Soon)" }
                             </Button>
                         </a>
                     </li>

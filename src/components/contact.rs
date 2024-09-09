@@ -1,42 +1,82 @@
 use yew::prelude::*;
 use crate::components::svg::{
-    emojis::{ Blushing, Mail },
+    emojis::{ Blushing },
     undraw::QuickChat,
 };
-use crate::components::socials::Socials;
+use crate::components::svg::logos::{Linkedin, Mail, Twitter, Github};
 use crate::ui::{Title, Card, TextLink};
+
+struct Item {
+    link: &'static str,
+    icon: Html,
+    title: &'static str,
+}
 
 #[function_component(Contact)]
 pub fn contact() -> Html {
-    fn handle_contact_description() -> Html {
-		html!{
-			<>
-				<p>{ "My preferred way of contact is via " }
-					<TextLink link="mailto:francesco.intoci@protonmail.com">{ "email" }<Mail /></TextLink>
-				</p>
-			</>
-		}
-    } 
+	let items: Vec<Item> = vec![
+        //Item {
+        //    link: "https://www.youtube.com/@marcempunkt9737",
+        //    icon: html! { <Youtube /> },
+        //    title: "Youtube",
+        //},
+        // Item {
+        //     link: "https://www.twitch.tv/marcempunkt",
+        //     icon: html! { <Twitch /> },
+        // },
+        Item {
+            link: "https://www.x.com/ccintoci",
+            icon: html! { <Twitter /> },
+            title: "Twitter",
+        },
+        Item {
+            link: "https://github.com/intx4",
+            icon: html! { <Github /> },
+            title: "Github",
+        },
+        Item {
+            link: "https://www.linkedin.com/in/francesco-intoci-94465719b/",
+            icon: html! { <Linkedin /> },
+            title: "Linkedin",
+        },
+        Item {
+            link: "mailto:francesco.intoci@protonmail.com",
+            icon: html! { <Mail /> },
+            title: "Email",
+        },
+    ];
 
+
+    let socials = html! {
+        <div>
+            <ul class="w-full p-4 flex flex-wrap gap-4 justify-around items-center">
+            {items.into_iter().map(|item: Item| {
+                    html! {
+                        <li title={item.title}>
+                            <TextLink
+                                link={item.link}
+                                open_in_tab={ !item.link.contains("mailto") } 
+                                class="p-4 inline-block [&>svg]:w-[2rem] [&>svg]:h-[2rem] [&>svg]:dark:stroke-white [&>svg]:dark:fill-white"
+                            >
+                                { item.icon }
+                            </TextLink>
+                        </li>
+                    }
+            }).collect::<Html>()}
+            </ul>
+        </div>
+    };
 
     html!{
 	<>
 	    <Title id="contact">
-                { "Contacts" } { " " } <Blushing />
+                { "Contacts" }
         </Title>
 
-	    <Card>
-            <div class="flex flex-col gap-10">
-                <div class="flex flex-wrap gap-8 items-center justify-center">
-                    <QuickChat class="min-w-[200px] max-w-[400px] h-auto max-[300px]:min-w-full" />
-                    <div class="flex-1 grow min-w-[300px] [&>p>svg]:h-[1.5rem] [&>p>a>svg]:h-[1.5rem] [&>p>a]:text-blue-700 [&>p>a]:underline [&>p>a]:dark:text-blue-400 flex flex-col gap-4 max-[850px]:min-w-full">
-                        { handle_contact_description() }
-                    </div>
-                </div>
-
-                <Socials />
-            </div>
-	    </Card>
+	<div class="flex flex-col gap-10">
+		{ socials }
+	</div>
+	    
         </>
     }
 }
