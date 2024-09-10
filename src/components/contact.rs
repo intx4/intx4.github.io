@@ -40,9 +40,9 @@ pub fn contact() -> Html {
             icon: html! { <Mail /> },
             title: "Email",
         },
-		Item {
-			// TODO: update repo
-            link: "https://raw.githubusercontent.com/intx4/intx4.github.io/old_site_backup/assets/resume.pdf",
+        Item {
+            // TODO: update repo
+            link: "https://raw.githubusercontent.com/intx4/intx4.github.io/rust_wasm/assets/cv.pdf",
             icon: html! { <PdfIcon /> },
             title: "CV",
         },

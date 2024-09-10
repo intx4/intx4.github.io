@@ -15,4 +15,3 @@ pub fn landing() -> Html {
         </div>
     }
 }
-

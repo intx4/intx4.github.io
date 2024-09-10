@@ -35,7 +35,6 @@ fn App() -> Html {
             </main>
         </ContextProvider<AppContext>>
     }
-    
 }
 
 fn main() {
