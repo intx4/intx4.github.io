@@ -35,7 +35,7 @@ jobs:
 
       - run: trunk clean
       - run: trunk build --release --public-url /${{ github.event.repository.name }}/
-      
+      - run: ls ./dist
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
