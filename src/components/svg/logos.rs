@@ -1,4 +1,3 @@
-use crate::components::svg::props::{handle_props_class, Props};
 use yew::{function_component, html, Html};
 
 #[function_component]

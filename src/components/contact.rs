@@ -1,5 +1,5 @@
 use crate::components::svg::logos::{Github, Linkedin, Mail, PdfIcon, Twitter};
-use crate::ui::{Card, TextLink, Title};
+use crate::ui::{TextLink, Title};
 use yew::prelude::*;
 
 struct Item {

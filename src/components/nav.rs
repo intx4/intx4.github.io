@@ -1,11 +1,8 @@
-use crate::components::svg::emojis::Home;
 use crate::components::svg::themes::{Dark, Light};
 use crate::contexts::theme::ThemeAction;
 use crate::ui::{Button, TextLink};
 use crate::AppContext;
-use yew::prelude::{
-    function_component, html, use_context, use_effect_with, use_state, Callback, Html, MouseEvent,
-};
+use yew::prelude::{function_component, html, use_context, Callback, Html};
 
 #[function_component]
 pub fn Nav() -> Html {

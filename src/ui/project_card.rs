@@ -1,5 +1,5 @@
 use crate::ui::Button;
-use yew::{function_component, html, use_context, AttrValue, Html, Properties};
+use yew::{function_component, html, AttrValue, Html, Properties};
 
 #[derive(PartialEq)]
 pub enum ProjectCardColor {
