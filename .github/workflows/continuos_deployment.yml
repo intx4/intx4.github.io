@@ -31,13 +31,13 @@ jobs:
           target: wasm32-unknown-unknown
       - uses: jetli/trunk-action@v0.1.0
       - uses: jetli/wasm-bindgen-action@v0.1.0
-      - uses: actions/checkout@v2
-
-      - run: trunk clean
-      - run: trunk build --release --public-url /${{ github.event.repository.name }}/
-      - run: ls ./dist
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Trunk clean
+        run: trunk clean
+      - name: Trunk build
+        run: trunk build --release --public-url /${{ github.event.repository.name }}/
+      #- run: ls ./dist
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
