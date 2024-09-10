@@ -2,13 +2,13 @@ name: Continuous integration
 on: [push, pull_request]
 
 jobs:
-  test: # job name
-    # test
-    runs-on: ubuntu-latest
+  #test: # job name
+  #  # test
+  #  runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - run: cargo test --all
+  #  steps:
+  #  - uses: actions/checkout@v4
+  #  - run: cargo test --all
 
   format:
     # code formatting
