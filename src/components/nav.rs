@@ -1,7 +1,7 @@
 use crate::components::svg::themes::{Dark, Light};
 use crate::contexts::theme::ThemeAction;
 use crate::ui::{Button, TextLink};
-use crate::AppContext;
+use crate::app::AppContext;
 use yew::prelude::{function_component, html, use_context, Callback, Html};
 
 #[function_component]
@@ -43,7 +43,7 @@ pub fn Nav() -> Html {
                 link="/"
                 class="flex gap-6 items-center"
             >
-               {" "}
+               {""}
             </TextLink>
 
         /* Navigation */
@@ -67,9 +67,9 @@ pub fn Nav() -> Html {
 
                 /* Link to blog */
                     <li>
-                        <a href="#blog">
+                        <a href="/blog">
                             <Button is_secondary={true}>
-                                { "Blog (Coming Soon)" }
+                                { "Blog" }
                             </Button>
                         </a>
                     </li>

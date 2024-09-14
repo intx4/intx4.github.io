@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 use crate::components::svg::props::{handle_props_class, Props};
-use crate::AppContext;
+use crate::app::AppContext;
 
 fn handle_color(app_context: &AppContext) -> &'static str {
     match app_context.theme.current {
