@@ -1,12 +1,12 @@
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
-pub struct TerminalCardProps {
-    pub children: Children, // The children prop will allow for nested text or components inside the TerminalCard.
+pub struct TerminalWindProps {
+    pub children: Children, // The children prop will allow for nested text or components inside the TerminalWind.
 }
 
-#[function_component(TerminalCard)]
-pub fn terminal_card(props: &TerminalCardProps) -> Html {
+#[function_component()]
+pub fn TerminalWind(props: &TerminalWindProps) -> Html {
     html! {
         <div style="
             background-color: black; 

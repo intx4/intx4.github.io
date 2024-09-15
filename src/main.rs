@@ -1,4 +1,6 @@
 mod app;
+mod home;
+mod blog;
 mod contexts;
 mod ui;
 mod components;
