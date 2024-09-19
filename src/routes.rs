@@ -3,16 +3,12 @@ use yew_router::prelude::*;
 
 use crate::home::Home;
 use crate::components::not_found::NotFound;
-use crate::blog::blog::Blog;
+use crate::blog::{blog::Blog, post::posts::BlogPosts};
 
 #[derive(Clone, Routable, PartialEq, Debug)]
 enum Routes {
     #[at("/home")]
     Home,
-    //#[to = "/#xamarin-why-and-why-not"]
-    //Blog1Route,
-    //#[to = "/#cat-dead-or-not"]
-    //Blog2Route,
     #[at("/blog")]
     BlogRoute,
     #[at("/")]
@@ -20,14 +16,22 @@ enum Routes {
     #[not_found]
     #[at("/404")]
     NotFound,
+    #[at("/blog/post/:index")]
+    BlogPostRoute { index: usize },
 }
 
 fn switch(routes: Routes) -> Html {
     match routes {
         Routes::Home | Routes::Root => html! { <Home /> },
-        // RootRoutes::Projects => html! { <Projects /> },
-        //Routes::Post { filename } => html! {<Post filename={filename.clone()} />},
         Routes::BlogRoute=> html! {<Blog />},
+        Routes::BlogPostRoute { index } => {
+            let posts = BlogPosts();
+            if index > 0 && index <= posts.len() {
+                html! { posts[index - 1].clone() }
+            } else {
+                html! { <NotFound /> }
+            }
+        },
         _ => html! {< NotFound />}
     }
 }

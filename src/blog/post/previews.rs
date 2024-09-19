@@ -8,8 +8,8 @@ pub fn BlogPostsPreviews() -> Vec<Html> {
             <BlogPostPreview
                 img="./assets/images/profile.jpg"
                 title="post1"
-                description={"a description"}
-                link="/post1"
+                description={"A description"}
+                link="/blog/post/1"
                 color={PostPreviewColor::Black}
             />
         },

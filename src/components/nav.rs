@@ -16,7 +16,7 @@ pub fn Nav() -> Html {
     }
 
     fn handle_url_icon(app_context: AppContext) -> Html {
-        if app_context.url.current.contains("blog"){
+        if app_context.url.current.contains("blog") && !app_context.url.current.contains("post"){
             return html!(
                 <a href="/">
                     <Button is_secondary={true}>
