@@ -1,7 +1,7 @@
+use crate::app::AppContext;
 use crate::components::svg::themes::{Dark, Light};
 use crate::contexts::theme::ThemeAction;
 use crate::ui::{Button, TextLink};
-use crate::app::AppContext;
 use yew::prelude::{function_component, html, use_context, Callback, Html};
 
 #[function_component]
@@ -16,14 +16,14 @@ pub fn Nav() -> Html {
     }
 
     fn handle_url_icon(app_context: AppContext) -> Html {
-        if app_context.url.current.contains("blog") && !app_context.url.current.contains("post"){
+        if app_context.url.current.contains("blog") && !app_context.url.current.contains("post") {
             return html!(
                 <a href="/">
                     <Button is_secondary={true}>
                         { "Home" }
                     </Button>
                 </a>
-            )
+            );
         } else {
             return html!(
                 <a href="/blog">
@@ -31,11 +31,11 @@ pub fn Nav() -> Html {
                         { "Blog" }
                     </Button>
                 </a>
-            )
+            );
         }
     }
 
-    fn handle_all_buttons(app_context: AppContext) -> Html{
+    fn handle_all_buttons(app_context: AppContext) -> Html {
         let cycle_theme = {
             let app_context = app_context.clone();
             let current_theme: &str = app_context.theme.current;
@@ -47,7 +47,8 @@ pub fn Nav() -> Html {
                 Some(i) => i,
                 None => 0,
             };
-            let next_theme: &str = match app_context.theme_cycle.iter().nth(current_theme_index + 1) {
+            let next_theme: &str = match app_context.theme_cycle.iter().nth(current_theme_index + 1)
+            {
                 Some(nt) => nt,
                 None => "light",
             };
@@ -58,7 +59,7 @@ pub fn Nav() -> Html {
         };
         let path = app_context.url.current.strip_prefix("/").unwrap();
 
-        if !path.eq("404"){
+        if !path.eq("404") {
             return html!(
                 <ul class="flex justify-end gap-4 items-center">
                     <li onclick={ cycle_theme }>
@@ -68,7 +69,7 @@ pub fn Nav() -> Html {
                         { handle_url_icon(app_context.clone()) }
                     </li>
                 </ul>
-            )
+            );
         }
         html!()
     }

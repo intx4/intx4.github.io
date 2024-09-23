@@ -17,7 +17,10 @@ impl Default for UrlState {
     fn default() -> Self {
         // Get the current URL from the window object
         let window: Window = window().expect("No Window Object!");
-        let current_url = window.location().pathname().unwrap_or_else(|_| "/".to_string());
+        let current_url = window
+            .location()
+            .pathname()
+            .unwrap_or_else(|_| "/".to_string());
         console::log!(format!("Current url: {}", current_url));
 
         Self {
@@ -38,17 +41,14 @@ impl Reducible for UrlState {
     fn reduce(self: Rc<Self>, action: Self::Action) -> Rc<Self> {
         match action {
             UrlAction::SetUrl(new_url) => {
-            // Access the window object and update the location
-            if let Some(window) = window() {
-                let location = window.location();
-                if let Err(err) = location.set_pathname(&new_url) {
-                    console::error!(format!("Failed to set pathname: {:?}", err));
+                // Access the window object and update the location
+                if let Some(window) = window() {
+                    let location = window.location();
+                    if let Err(err) = location.set_pathname(&new_url) {
+                        console::error!(format!("Failed to set pathname: {:?}", err));
+                    }
                 }
-            }
-            UrlState {
-                current: new_url,
-            }
-            .into()
+                UrlState { current: new_url }.into()
             }
         }
     }

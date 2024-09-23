@@ -1,5 +1,5 @@
-use yew::prelude::*;
-use crate::contexts::url::{use_url_context, UrlState, UrlAction}; // Adjust the import path as necessary
+use crate::contexts::url::{use_url_context, UrlAction, UrlState};
+use yew::prelude::*; // Adjust the import path as necessary
 
 #[function_component(NotFound)]
 pub fn not_found() -> Html {
@@ -23,5 +23,3 @@ pub fn not_found() -> Html {
         </div>
     }
 }
-
-

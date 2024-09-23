@@ -1,8 +1,8 @@
-use yew::prelude::*;
-use yew::{html, Html};
-use pulldown_cmark::{Parser, Options};
+use pulldown_cmark::{Options, Parser};
 use reqwest::get;
 use wasm_bindgen_futures::spawn_local;
+use yew::prelude::*;
+use yew::{html, Html};
 
 #[derive(Properties, PartialEq)]
 pub struct BlogPostProps {

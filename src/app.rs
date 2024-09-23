@@ -1,11 +1,11 @@
 use std::default;
 
+use crate::components::nav::Nav;
 use crate::contexts::theme::{use_theme_context, ThemeState};
 use crate::contexts::url::{use_url_context, UrlState};
+use crate::routes::RouteOutlet;
 use yew::{function_component, html, ContextProvider, Html, UseReducerHandle};
 use yew_router::switch;
-use crate::components::nav::Nav;
-use crate::routes::RouteOutlet;
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct AppContext {
@@ -15,10 +15,9 @@ pub struct AppContext {
 }
 
 const REPO: &str = "intx4/intx4.github.io/";
-const IS_MASTER: bool=true; // set to true to exclude the BRANCH_PREFIX when fetching assets
+const IS_MASTER: bool = true; // set to true to exclude the BRANCH_PREFIX when fetching assets
 const BRANCH_PREFIX: &str = "refs/heads/";
-const BRANCH_NAME: &str= "rust_wasm/"; // set to main, master or whatever branch name
-
+const BRANCH_NAME: &str = "rust_wasm/"; // set to main, master or whatever branch name
 
 #[derive(PartialEq)]
 pub enum AssetType {
@@ -29,24 +28,24 @@ pub enum AssetType {
 
 impl Default for AssetType {
     fn default() -> Self {
-        return AssetType::Generic
+        return AssetType::Generic;
     }
 }
 
 pub fn get_raw_contents_url(content_name: &str, content_type: AssetType) -> String {
     let mut url = "https://raw.githubusercontent.com/".to_owned();
     url.push_str(REPO);
-    
-    if !IS_MASTER || content_type == AssetType::BlogPost{
+
+    if !IS_MASTER || content_type == AssetType::BlogPost {
         url.push_str(BRANCH_PREFIX);
     }
-    
+
     url.push_str(BRANCH_NAME);
     url.push_str("/src/assets/");
-    match content_type{
+    match content_type {
         AssetType::Image => url.push_str(format!("images/{}", content_name).as_str()),
         AssetType::BlogPost => url.push_str(format!("posts/{}", content_name).as_str()),
-        _ =>  url.push_str(content_name),
+        _ => url.push_str(content_name),
     }
     return url;
 }
@@ -71,7 +70,6 @@ pub fn app() -> Html {
                     </div>
                 </div>
             </main>
-        </ContextProvider<AppContext>>   
+        </ContextProvider<AppContext>>
     }
 }
-

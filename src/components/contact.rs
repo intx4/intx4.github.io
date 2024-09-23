@@ -1,7 +1,7 @@
+use crate::app::*;
 use crate::components::svg::logos::{Github, Linkedin, Mail, PdfIcon, Twitter};
 use crate::ui::{TextLink, Title};
 use yew::prelude::*;
-use crate::app::*;
 
 struct Item {
     link: String,

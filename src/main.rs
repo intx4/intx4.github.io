@@ -1,10 +1,10 @@
 mod app;
-mod home;
 mod blog;
-mod contexts;
-mod ui;
 mod components;
+mod contexts;
+mod home;
 mod routes;
+mod ui;
 
 use app::App;
 use yew;

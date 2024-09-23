@@ -1,5 +1,5 @@
-use yew::{function_component, html, Html};
 use crate::blog::post::previews::BlogPostsPreviews;
+use yew::{function_component, html, Html};
 
 #[function_component()]
 pub fn Blog() -> Html {

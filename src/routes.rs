@@ -1,9 +1,9 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::home::Home;
-use crate::components::not_found::NotFound;
 use crate::blog::{blog::Blog, post::posts::BlogPosts};
+use crate::components::not_found::NotFound;
+use crate::home::Home;
 
 #[derive(Clone, Routable, PartialEq, Debug)]
 enum Routes {
@@ -23,7 +23,7 @@ enum Routes {
 fn switch(routes: Routes) -> Html {
     match routes {
         Routes::Home | Routes::Root => html! { <Home /> },
-        Routes::BlogRoute=> html! {<Blog />},
+        Routes::BlogRoute => html! {<Blog />},
         Routes::BlogPostRoute { index } => {
             let posts = BlogPosts();
             if index > 0 && index <= posts.len() {
@@ -31,8 +31,8 @@ fn switch(routes: Routes) -> Html {
             } else {
                 html! { <NotFound /> }
             }
-        },
-        _ => html! {< NotFound />}
+        }
+        _ => html! {< NotFound />},
     }
 }
 
