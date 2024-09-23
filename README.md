@@ -1,16 +1,8 @@
 [Website](https://intx4.github.io) 
 
-# TODO
-```
- <main class={format!("{} min-h-screen", theme.current)}> // Ensure main has min height of the screen
-                <div class="w-full min-h-screen bg-gray-50 dark:bg-slate-900 text-black dark:text-slate-300 transition flex flex-col justify-between">
-                    <div class="max-w-[1200px] m-auto p-4 flex-grow"> // Add flex-grow to allow it to stretch
-                        <Nav />
-                        <Landing />
-                        <Aboutme />
-                        <Contact />
-                    </div>
-                </div>
-            </main>
-```
-fix this on mobile (the black background is only half on mobile)
+# HOW TO
+
+## Add a new blog post
+1. Write your blog post in a markdown file and place it in `src/assets/posts` (remember that links in the file, such as images, should link to `/assets/...`). 
+2. Add a preview into `src/blog/previews.rs`. **IMPORTANT:** routes follow increasing numbering, so the link of the preview should follow this numbering (e.g. `blog/post/$index`). This will spawn a previw which will link to the `$index-1`-th post in `src/blog/posts.rs`
+3. Add the post to `src/blog/posts.rs`

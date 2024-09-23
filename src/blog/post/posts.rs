@@ -1,14 +1,13 @@
 use crate::blog::post::post::BlogPost;
 use yew::prelude::*;
-
-const NumPosts: u8 = 1;
+use crate::app::{get_raw_contents_url, AssetType};
 
 pub fn BlogPosts() -> Vec<Html> {
     // add new posts
     vec![
         html! {
             <BlogPost
-                url="https://raw.githubusercontent.com/intx4/intx4.github.io/refs/heads/rust-wasm/blog/src/assets/posts/1.md"
+                url={get_raw_contents_url("1.md", AssetType::BlogPost)}
             />
         },
     ]

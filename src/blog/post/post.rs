@@ -24,13 +24,11 @@ pub fn blog_post(props: &BlogPostProps) -> Html {
                 match get(url.as_str()).await {
                     Ok(response) => {
                         if let Ok(text) = response.text().await {
-                            // Parse the markdown into HTML
                             let mut options = Options::empty();
                             options.insert(Options::ENABLE_STRIKETHROUGH);
                             let parser = Parser::new_ext(&text, options);
                             let mut html_output = String::new();
                             pulldown_cmark::html::push_html(&mut html_output, parser);
-                            //gloo::console::log!(format!("fetched markdown: {}", html_output));
                             content.set(html_output);
                         }
                     }
@@ -149,15 +147,16 @@ pub fn blog_post(props: &BlogPostProps) -> Html {
             .blog-post table tr:nth-child(2n) {
                 background-color: #f6f8fa;
             }
+            .content {
+                text-align: center;
+            }
         "#}
-    </style>
-    
-
-            <div class="blog-post">
-                <div class="content">
-                    {Html::from_html_unchecked(AttrValue::from(content.clone().to_string()))}
-                </div>
+        </style>
+        <div class="blog-post">
+            <div class="content">
+                {Html::from_html_unchecked(AttrValue::from(content.clone().to_string()))}
             </div>
+        </div>
         </>
     }
 }

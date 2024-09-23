@@ -7,9 +7,9 @@ pub fn BlogPostsPreviews() -> Vec<Html> {
         html! {
             <BlogPostPreview
                 img="./assets/images/question.jpg"
-                title="post1"
-                description={"Coming Soon"}
-                link="/blog/post/1"
+                title="Coming Soon"
+                description={"... stay tuned!"}
+                link="/blog/post/1" // next post must be 2
                 color={PostPreviewColor::Black}
             />
         },
