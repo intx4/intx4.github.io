@@ -15,11 +15,12 @@ pub struct AppContext {
 }
 
 const REPO: &str = "intx4/intx4.github.io/";
-const IS_MASTER: bool=false; // set to true to exclude the BRANCH_PREFIX when fetching assets
+const IS_MASTER: bool=true; // set to true to exclude the BRANCH_PREFIX when fetching assets
 const BRANCH_PREFIX: &str = "refs/heads/";
-const BRANCH_NAME: &str= "rust-wasm/blog/"; // set to main, master or whatever branch name
+const BRANCH_NAME: &str= "rust_wasm/"; // set to main, master or whatever branch name
 
 
+#[derive(PartialEq)]
 pub enum AssetType {
     Generic, // leaves in top level assets
     Image,
@@ -36,7 +37,7 @@ pub fn get_raw_contents_url(content_name: &str, content_type: AssetType) -> Stri
     let mut url = "https://raw.githubusercontent.com/".to_owned();
     url.push_str(REPO);
     
-    if !IS_MASTER{
+    if !IS_MASTER || content_type == AssetType::BlogPost{
         url.push_str(BRANCH_PREFIX);
     }
     
