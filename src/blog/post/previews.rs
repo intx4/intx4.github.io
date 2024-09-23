@@ -6,9 +6,9 @@ pub fn BlogPostsPreviews() -> Vec<Html> {
     vec![
         html! {
             <BlogPostPreview
-                img="./assets/images/profile.jpg"
+                img="./assets/images/question.jpg"
                 title="post1"
-                description={"A description"}
+                description={"Coming Soon"}
                 link="/blog/post/1"
                 color={PostPreviewColor::Black}
             />
