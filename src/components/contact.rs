@@ -42,7 +42,7 @@ pub fn contact() -> Html {
         },
         Item {
             // TODO: update repo
-            link: "https://raw.githubusercontent.com/intx4/intx4.github.io/rust_wasm/blog/src/assets/cv.pdf",
+            link: "https://raw.githubusercontent.com/intx4/intx4.github.io/refs/heads/rust-wasm/blog/src/assets/cv.pdf",
             icon: html! { <PdfIcon /> },
             title: "CV",
         },

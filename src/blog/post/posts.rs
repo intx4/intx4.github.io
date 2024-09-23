@@ -8,7 +8,7 @@ pub fn BlogPosts() -> Vec<Html> {
     vec![
         html! {
             <BlogPost
-                url="https://raw.githubusercontent.com/intx4/intx4.github.io/rust_wasm/blog/src/posts/1.md"
+                url="https://raw.githubusercontent.com/intx4/intx4.github.io/refs/heads/rust-wasm/blog/src/assets/posts/1.md"
             />
         },
     ]
