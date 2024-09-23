@@ -22,7 +22,7 @@
       // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
       // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
       // Otherwise, leave pathSegmentsToKeep as 0.
-      var pathSegmentsToKeep = 1; // set to 0 if not github pages
+      var pathSegmentsToKeep = 0;
 
       var l = window.location;
       l.replace(
@@ -32,6 +32,13 @@
         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
+
+      console.log('Protocol:', l.protocol);
+      console.log('Hostname:', l.hostname);
+      console.log('Port:', l.port);
+      console.log('Pathname:', l.pathname);
+      console.log('Search:', l.search);
+      console.log('Hash:', l.hash);
 
     </script>
   </head>
