@@ -5,7 +5,7 @@ pub struct Props {
     #[prop_or_default(false)]
     pub open_in_tab: bool,
     #[prop_or_default("")]
-    pub link: &'static str,
+    pub link: String,
     #[prop_or_default("")]
     pub class: &'static str,
     pub children: Html,
@@ -21,7 +21,7 @@ pub fn TextLink(props: &Props) -> Html {
     if props.open_in_tab {
         return html! {
             <a
-                href={props.link}
+                href={props.link.clone()}
                 target="_blank"
                 rel="noopener noreferrer"
                 class={classes}
@@ -33,7 +33,7 @@ pub fn TextLink(props: &Props) -> Html {
 
     html! {
         <a
-            href={props.link}
+            href={props.link.clone()}
             class={classes}
         >
             {props.children.clone()}
