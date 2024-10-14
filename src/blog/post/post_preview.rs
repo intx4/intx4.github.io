@@ -29,7 +29,7 @@ pub fn blog_post_preview(props: &Props) -> Html {
                     <p>{ props.description.clone() }</p>
                     if !props.img.is_empty() {
                         <img
-                            class="w-full max-w-[250px] shadow border border-gray-200 dark:border-slate-700"
+                            class="w-full max-w-[250px] shadow border border-gray-200 dark:border-slate-700 mx-auto"
                             src={ props.img.clone() }
                             alt="project img"
                             loading="lazy"

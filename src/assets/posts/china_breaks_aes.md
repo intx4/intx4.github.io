@@ -11,7 +11,9 @@ Let's get rid of the most important question first. The anwser is: "*probably no
 First off, if **anyone on this planet** was able, as of today, of breaking AES, **for sure we wouldn't know of it**. Not now, not in 10 years, not in 20 years, maybe in 50 years. Think about it. The strategic advantage arising from the capability of breaking the algorithm that underpins any form of secure communication used today (remember that AES makes HTTPS possible), would be tremendous. If a state actor (China, USA, Israel, you name it) would have had the technology to do so, for sure it would have gone above and beyond to keep it a secret, for as long as it could.
 Secondly, there is also a technical reason not to be so dramatic. The paper (quoting from the article of 'The quantum insider') "*targets the Present, Gift-64, and Rectangle algorithms, called key representatives of the Substitution-Permutation Network (SPN) structure*". This statement by itself is already surprising, given that the paper abstract (ndr., the only part in english) does not mention any attack on block ciphers, but rather on RSA (asymmetric crypto). And even about the attack on RSA: they claim to have factored a 22 bit number, which would take basically a blink of an eye on my gen 10 Thinkpad. But let's get back on track.
 
-![alt text](/assets/images/spn.jpg "Substitution-Permutation Network")
+<div style="text-align: center;">
+  <img src="/assets/images/spn.jpg" alt="alt text" title="Substitution-Permutation Network" />
+</div>
 
 ## What is a Substitution-Permutation Network
 Substitution-Permutation Network is a common architecture for designing block ciphers: essentially, it is a repetition of two operations, 'Substitution boxes' (S-boxes) and 'Permutation boxes' (P-boxes), applied in a round fashion. The input of the round goes into the S-box, the output of the S-box goes as input in the P-box, and the output goes as input to the S-box in the subsequent round.
