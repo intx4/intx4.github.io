@@ -12,7 +12,7 @@ pub struct Props {
     pub img: AttrValue,
     pub title: Html,
     pub description: Html,
-    pub link: AttrValue,
+    pub link: AttrValue, // this is the route in the URL to the blog post that should match the route in Routes.rs
     #[prop_or(PostPreviewColor::LightBlue)]
     pub color: PostPreviewColor,
 }

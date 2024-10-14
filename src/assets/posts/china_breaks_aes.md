@@ -1,0 +1,21 @@
+# On China breaking 'military-grade' encryption
+Do y'all remember the fuss about China breaking RSA with a quantum computer, early in 2023? No? Well that's not surprising, especially given that RSA is still around, and has not been broken (yet). In case you did remember, you should remember as well how quickly that news [was debunked by experts of the field](https://scottaaronson.blog/?p=6957).
+
+Turns out that we are back at it. A few days ago, I came across the news of some researchers from some reputable Chinese institutions (e.g., Shangai University) breaking 'military-grade' encryption, with the help of a D-Wave quantum annealing computer ([news](https://thequantuminsider.com/2024/10/11/chinese-scientists-report-using-quantum-computer-to-hack-military-grade-encryption/), [paper](http://cjc.ict.ac.cn/online/onlinepaper/wc-202458160402.pdf)).
+
+## First off, what is 'military-grade' encryption?
+Honestly, I don't know. There is no such thing about 'military-grade' encryption. What most of the sensationalistic headlines are hinting to is the AES (Rijndael) encryption algorithm, an [industry standard and best practice for symmetric encryption (ISO/IEC 18033-3)](https://www.iso.org/standard/54531.html). The 'military-grade' part of it is just a catchy and sexy addition which security consultants might use to spill some more cash out of their clients, I guess. Why? Well sure, the military uses it for protecting the most jaw-dropping, sensitive, top-secret information out there. With very high probability, your WiFi router is using it, too.
+
+## Should you be worried?
+Let's get rid of the most important question first. The anwser is: "*probably not*", for a number of reasons.
+First off, if **anyone on this planet** was able, as of today, of breaking AES, **for sure we wouldn't know of it**. Not now, not in 10 years, not in 20 years, maybe in 50 years. Think about it. The strategic advantage arising from the capability of breaking the algorithm that underpins any form of secure communication used today (remember that AES makes HTTPS possible), would be tremendous. If a state actor (China, USA, Israel, you name it) would have had the technology to do so, for sure it would have gone above and beyond to keep it a secret, for as long as it could.
+Secondly, there is also a technical reason not to be so dramatic. The paper (quoting from the article of 'The quantum insider') "*targets the Present, Gift-64, and Rectangle algorithms, called key representatives of the Substitution-Permutation Network (SPN) structure*". This statement by itself is already surprising, given that the paper abstract (ndr., the only part in english) does not mention any attack on block ciphers, but rather on RSA (asymmetric crypto). And even about the attack on RSA: they claim to have factored a 22 bit number, which would take basically a blink of an eye on my gen 10 Thinkpad. But let's get back on track.
+
+![alt text](/assets/images/spn.jpg "Substitution-Permutation Network")
+
+## What is a Substitution-Permutation Network
+Substitution-Permutation Network is a common architecture for designing block ciphers: essentially, it is a repetition of two operations, 'Substitution boxes' (S-boxes) and 'Permutation boxes' (P-boxes), applied in a round fashion. The input of the round goes into the S-box, the output of the S-box goes as input in the P-box, and the output goes as input to the S-box in the subsequent round.
+The key takeway is that, between what someone calls 'military-grade' encryption and the block ciphers (allegedly) broken in the paper, there is not much in common apart from the structure. For example, PRESENT is much more lightweight than AES, with less rounds and smaller keys (in some instantiation). The core of the cipher, which lies within in the S-box and P-box, is fundamentally different, and there is no security reduction that links the two (that is, one cannot say that AES is broken if PRESENT is broken, or the other way around). To me, the fact that AES was not considered in the paper nor in the article, says already a lot.
+
+## The key takeaway
+In general, I would be super-extra skeptical from papers (or articles) with such bold statements, if they are not coming from [IACR](https://iacr.org/): that's at least where the real cryptography happens nowadays.

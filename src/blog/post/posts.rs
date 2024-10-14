@@ -6,7 +6,7 @@ pub fn BlogPosts() -> Vec<Html> {
     // add new posts
     vec![html! {
         <BlogPost
-            url={get_raw_contents_url("1.md", AssetType::BlogPost)}
+            url={get_raw_contents_url("china_breaks_aes.md", AssetType::BlogPost)}
         />
     }]
 }
