@@ -6,7 +6,7 @@ pub fn BlogPostsPreviews() -> Vec<Html> {
     vec![html! {
         <BlogPostPreview
             img="./assets/images/qc.jpg"
-            title="On China breaking 'military-grade' encryption"
+            title="Did China break 'military-grade' encryption?"
             description={"Once again, cryptography doom's day!"}
             date={"14 October, 2024"}
             link="/blog/post/1" // next post must be 2
