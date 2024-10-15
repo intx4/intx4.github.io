@@ -15,6 +15,7 @@ pub struct Props {
     pub link: AttrValue, // this is the route in the URL to the blog post that should match the route in Routes.rs
     #[prop_or(PostPreviewColor::LightBlue)]
     pub color: PostPreviewColor,
+    pub date: Html,
 }
 
 #[function_component(BlogPostPreview)]
@@ -27,6 +28,7 @@ pub fn blog_post_preview(props: &Props) -> Html {
                         { props.title.clone() }
                     </h4>
                     <p>{ props.description.clone() }</p>
+                    <p>{ props.date.clone() }</p>
                     if !props.img.is_empty() {
                         <img
                             class="w-full max-w-[250px] shadow border border-gray-200 dark:border-slate-700 mx-auto"
