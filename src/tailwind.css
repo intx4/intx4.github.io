@@ -57,3 +57,38 @@ svg {
   padding: 20px;
 }
 
+.type {
+  color: #0000; /* Start with invisible text */
+  background:
+    linear-gradient(-90deg, #008000 5px, #0000 0) 10px 0,
+    linear-gradient(#008000 0 0) 0 0; /* Gradient for the typing effect */
+  background-size: calc(var(--n) * 1ch) 100%; /* Background size based on text length */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  background-clip: text; /* Clip the background to the text */
+  background-repeat: no-repeat; /* Prevent background from repeating */
+  opacity: 0; /* Start with opacity 0 */
+  animation:
+    /* adjust on a case by case base*/
+    fadeIn 0.00000001s forwards, /* Fade in animation */
+    t calc(var(--n) * .01s) steps(var(--n)) forwards; /* Typing animation */
+  animation-delay: calc(var(--delay) * .8s); /* Start typing after fade-in */
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0; /* Start invisible */
+      visibility: hidden; /* Ensure hidden */
+  }
+  99% {
+      visibility: hidden; /* Stay hidden until the end */
+  }
+  100% {
+      opacity: 1; /* Fully visible */
+      visibility: visible; /* Make visible */
+  }
+}
+
+@keyframes t {
+  from { background-size: 0 100%; } /* Start with no visible text */
+  to { background-size: calc(var(--n) * 1ch) 100%; } /* End with full text */
+}

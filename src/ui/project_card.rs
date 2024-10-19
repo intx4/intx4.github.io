@@ -27,8 +27,6 @@ pub fn project_card(props: &Props) -> Html {
             <div
                 class="bg-white border border-gray-200 flex flex-wrap gap-4 justify-center p-4 rounded-lg dark:bg-slate-800 dark:border-slate-700"
             >
-                // left
-                // TODO change min width for smaller screens make it smaller
                 <div class="flex flex-col flex-1 grow min-w-[300px] gap-6 self-start max-[850px]:min-w-full">
                     <div class="flex flex-col gap-4">
                         <h4 class="text-2xl font-bold bg-sky-50 dark:bg-blue-300/10 py-2 px-3 w-fit rounded-lg">

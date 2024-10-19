@@ -1,73 +1,127 @@
-use crate::ui::TerminalWind;
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq)]
-pub struct Props {
-    pub children: Html,
+pub struct TypingProps {
+    pub children: String,
+    pub delay: usize,
 }
 
 #[function_component(Typing)]
-fn typing(props: &Props) -> Html {
+fn typing(props: &TypingProps) -> Html {
+    let text_length = props.children.len();
+
     html! {
-    <>
-    <style>
-    {"
-@keyframes typing {
-  from {
-    width: 0;
-    visibility: visible;
-  }
-  to {
-    width: 100%;
-    visibility: visible;
-  }
-}
-
-p {
-  overflow: hidden;
-  white-space: nowrap;
-  font-family: monospace;
-  font-size: 20px;
-  color: green;
-  visibility: hidden; /* Initially hide all lines */
-  animation: typing 1s steps(40, end) forwards;
-}
-
-/* Specific delays for each line */
-p:nth-child(1) {
-  animation-delay: 0s;
-  animation-fill-mode: forwards; /* Ensure line stays visible after typing */
-  visibility: visible; /* Make the first line visible when its animation starts */
-}
-
-p:nth-child(2) {
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
-}
-
-p:nth-child(3) {
-  animation-delay: 2s;
-  animation-fill-mode: forwards;
-}
-
-    "}
-    </style>
-    <div class="text-xl">
+    <span
+      class="type"
+      style={format!("--n: {}; --delay: {};", text_length, props.delay)}
+    >
         { props.children.clone() }
-    </div>
-    </>
+    </span>
     }
 }
 
+#[derive(Properties, PartialEq)]
+pub struct WhoamiProps {
+    pub lines: Vec<String>,
+}
+
 #[function_component(Whoami)]
-pub fn whoami(props: &Props) -> Html {
+pub fn whoami(props: &WhoamiProps) -> Html {
     html! {
         <>
             <div class="flex-row" style="display:flex; white-space:nowrap; overflow:hidden; align-items:baseline">
-                <h1 class="font-bold text-xl text-terminal">{"~$ whoami"}</h1><h1 class="font-bold text-xl terminal">{" _"}</h1>
+                <h1 class="font-bold text-xl text-terminal">{"~$ whoami"}</h1>
+                <h1 class="font-bold text-xl terminal">{" _"}</h1>
             </div>
             <br />
-            <Typing>{props.children.clone()}</Typing>
+            {
+                for props.lines.iter().enumerate().map(|(i, line)| {
+                    html! {
+                        <Typing delay={i} children={line.clone()} />
+                    }
+                })
+            }
+        </>
+    }
+}
+
+#[derive(Properties, PartialEq)]
+pub struct TerminalWindProps {
+    pub children: Children,
+}
+
+#[function_component(TerminalWind)]
+pub fn terminalWind(props: &TerminalWindProps) -> Html {
+    html! {
+        <>
+        <style>
+        {"
+            .terminal-window {
+                background-color: black; 
+                color: rgb(0, 128, 0); 
+                font-family: monospace; 
+                padding: 1rem; 
+                border-radius: 8px; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                margin: 1rem auto; 
+                width: calc(100% - 40px); /* Adjust width to account for padding */
+                max-width: 900px; 
+                position: relative; 
+                overflow: hidden; 
+                box-sizing: border-box; /* Include padding in the element's total width and height */
+            }
+        
+            .terminal-header {
+                background-color: #333; 
+                color: white; 
+                padding: 0.5rem 1rem; 
+                border-top-left-radius: 8px; 
+                border-top-right-radius: 8px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: flex-start; 
+            }
+            
+            @media (max-width: 650px) {
+                .terminal-window {
+                    width: calc(100% - 20px); /* Ensures it fits within smaller screens */
+                }
+            }
+        "}
+        </style>
+
+        <div class="terminal-window flex justify-left" style="
+            background-color: black; 
+            color: green; 
+            font-family: monospace; 
+            padding: 1rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        ">
+            <div style="
+                background-color: #333; 
+                color: white; 
+                padding: 0.5rem 1rem; 
+                border-top-left-radius: 8px; 
+                border-top-right-radius: 8px;
+                display: flex; 
+                align-items: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+            ">
+                <div style="width: 12px; height: 12px; background-color: red; border-radius: 50%; margin-right: 0.5rem;"></div>
+                <div style="width: 12px; height: 12px; background-color: yellow; border-radius: 50%; margin-right: 0.5rem;"></div>
+                <div style="width: 12px; height: 12px; background-color: green; border-radius: 50%;"></div>
+            </div>
+
+            // Terminal Content
+            <div style="padding-top: 2rem;"> // Adds padding to make space for the terminal header.
+                { props.children.clone() }
+            </div>
+        </div>
         </>
     }
 }
@@ -75,19 +129,14 @@ pub fn whoami(props: &Props) -> Html {
 #[function_component(Aboutme)]
 pub fn aboutme() -> Html {
     html! {
-        <TerminalWind >
-            <div class="flex gap-4 justify-between items-center max-[650px]:flex-col max-[650px]:gap-8">
+        <TerminalWind>
                 <section class="flex flex-col gap-4 justify-center">
-                    <Whoami>
-                        // each line should live in its own <p>
-                        // add a child in the typing style: p:nth-child(i)
-                        // and adjust the timing of the animation
-                        <p>{"==> Francesco Intoci: SWE living in Zurich, coming from Sicily"}</p>
-                        <p>{"==> currently working in Blockchain @ Taurus"}</p>
-                        <p>{"==> strong interest in security, privacy and cryptography engineering"}</p>
-                    </Whoami>
+                    <Whoami lines={vec![
+                        "==> Living in Zurich, coming from Sicily".to_string(),
+                        "==> working as R&D Blockchain Engineer @ Taurus".to_string(),
+                        "==> interests: security, privacy and cryptography engineering".to_string(),
+                    ]} />
                 </section>
-            </div>
         </TerminalWind>
     }
 }

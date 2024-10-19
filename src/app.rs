@@ -57,19 +57,24 @@ pub fn app() -> Html {
     let url: UseReducerHandle<UrlState> = use_url_context();
 
     html! {
-        <ContextProvider<AppContext> context={AppContext {
-            theme: theme.clone(),
-            theme_cycle: theme_cycle,
-            url: url,
-        }}>
-            <main class={format!("{} flex-grow", theme.current)} style="min-height: 100vh; width: 100vw; overflow-x: hidden;">
-                <div class="w-full min-h-screen h-full bg-gray-50 dark:bg-slate-900 text-black dark:text-slate-300 transition flex flex-col justify-between">
-                    <div class="max-w-[1200px] m-auto p-4 flex-grow">
-                        <Nav />
-                        <RouteOutlet />
+        <>
+            // Add viewport meta tag for responsive design
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+            <ContextProvider<AppContext> context={AppContext {
+                theme: theme.clone(),
+                theme_cycle: theme_cycle,
+                url: url,
+            }}>
+                <main class={format!("{} flex-grow", theme.current)} style="min-height: 100vh; width: 100vw; overflow-x: hidden;">
+                    <div class="w-full min-h-screen h-full bg-gray-50 dark:bg-slate-900 text-black dark:text-slate-300 transition flex flex-col justify-between">
+                        <div class="w-full max-w-full sm:max-w-[1200px] mx-auto p-4 flex-grow">
+                            <Nav />
+                            <RouteOutlet />
+                        </div>
                     </div>
-                </div>
-            </main>
-        </ContextProvider<AppContext>>
+                </main>
+            </ContextProvider<AppContext>>
+        </>
     }
 }
