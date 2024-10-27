@@ -28,7 +28,7 @@ These constraints have led ISPs to implement an automated pipeline to block targ
   <img src="/assets/images/piracy_shield_login.png" alt="alt text" style="max-width: 100%; height: auto;" />
 </div>
 
-###### The ticket blocking one of Google Drive IPs 
+###### Login page of Piracy Shield ticket platform
 
 ## A carousel of incidents 🎪
 The concerns of all the most prominent experts on the Italian IT panorama (shared also by less tech savvy people, but surprisingly not by AGCOM or the Piracy Shield creators), manifested in a series of embarrassing incidents. A big one already happened earlier this year, in February, when the mighty shield blocked a [Cloudflare IP](https://torrentfreak.com/agcom-admits-piracy-shield-blunder-cloudflare-urges-users-to-complain-240321/), resulting in a plethora of innocent websites being blocked for Italian users. The most prominent one, however, actually happened only yesterday (October 24, 2024), when a ticket blocked [one IP belonging to the Google CDN hosted in Milan](https://www.ansa.it/english/news/general_news/2024/10/20/anti-piracy-shield-halts-google-drive_2e7b137e-361d-4026-a704-9895c798e65a.html), where 70% of Google traffic in Italy goes through. Italian users were of course impacted, as many could not access Google Drive. Funnily enough, the block impacted DAZN, one of the football TV streamers with access to the Piracy Shield, as well. Also, it seems that even the stop page belonging to Tiscali - one of the biggest italian ISP - was blocked. Kinda hilarious, don't you think? 
@@ -44,6 +44,8 @@ The concerns of all the most prominent experts on the Italian IT panorama (share
 <div style="display: flex; justify-content: center;">
   <img src="/assets/images/piracy_shield_2.jpeg" alt="alt text"style="max-width: 100%; height: auto;" />
 </div>
+
+###### The ticket blocking one of Google IPs
 
 This incident effectively shows two things:
 
