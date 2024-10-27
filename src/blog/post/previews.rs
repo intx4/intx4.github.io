@@ -4,6 +4,7 @@ use yew::prelude::*;
 pub fn BlogPostsPreviews() -> Vec<Html> {
     // add new post previews here
     vec![html! {
+        <>
         <BlogPostPreview
             img="./assets/images/qc.jpg"
             title="Did China break 'military-grade' encryption?"
@@ -12,5 +13,13 @@ pub fn BlogPostsPreviews() -> Vec<Html> {
             link="/blog/post/1" // next post must be 2
             color={PostPreviewColor::Black}
         />
-    }]
+        <BlogPostPreview
+        img="./assets/images/piracy.jpeg"
+        title="Weaponizing ISPs"
+        description={"How Italy is turning its own ISPs in censorship machines"}
+        date={"27 October, 2024"}
+        link="/blog/post/2"
+        color={PostPreviewColor::Black}
+        />
+    </>}]
 }

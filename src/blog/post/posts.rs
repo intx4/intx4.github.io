@@ -4,9 +4,14 @@ use yew::prelude::*;
 
 pub fn BlogPosts() -> Vec<Html> {
     // add new posts
-    vec![html! {
+    vec![
+        html! {
         <BlogPost
             url={get_raw_contents_url("china_breaks_aes.md", AssetType::BlogPost)}
-        />
-    }]
+        />},
+        html! {
+        <BlogPost
+            url={get_raw_contents_url("weaponizing_ISPs.md", AssetType::BlogPost)}
+        />},
+    ]
 }
